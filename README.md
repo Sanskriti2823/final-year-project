@@ -1,5 +1,7 @@
 # LearnSmart AI — AI E-Learning Recommendation System
 
+Repository: `final-year-project`
+
 A final-year project starter using React + Vite, Express + MongoDB, JWT authentication, and a Python FastAPI recommendation service.
 
 ## Requirements
