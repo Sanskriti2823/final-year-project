@@ -1,0 +1,13 @@
+title,category,level,description,tags,skills
+Python Programming,Programming,beginner,"Learn Python syntax variables loops and functions","python basics coding","Python"
+Advanced Python,Programming,advanced,"Master object oriented programming decorators and generators","python oop","Python OOP"
+Full Stack MERN,Web Development,intermediate,"Build full stack applications with React Express Node and MongoDB","mern react node","React Node.js MongoDB"
+React for Beginners,Web Development,beginner,"Learn components props state hooks and routing","react frontend","React JavaScript"
+Node.js and Express,Web Development,intermediate,"Create REST APIs middleware and backend services","node express api","Node.js Express"
+MongoDB Essentials,Database,beginner,"Understand documents collections queries and indexes","mongodb database","MongoDB"
+Machine Learning Basics,Artificial Intelligence,beginner,"Explore regression classification and model evaluation","machine learning ml","Python ML"
+Natural Language Processing,Artificial Intelligence,advanced,"Explore text processing vectorization and language models","nlp ai text","Python NLP"
+Cybersecurity Fundamentals,Cybersecurity,beginner,"Learn networking authentication encryption and common threats","security network","Cybersecurity Networking"
+Data Structures and Algorithms,Computer Science,intermediate,"Study arrays linked lists trees graphs and time complexity","dsa algorithms","DSA Problem Solving"
+Cloud Computing with AWS,Cloud Computing,intermediate,"Learn cloud compute storage networking and deployment","aws cloud","Cloud AWS"
+SQL and Database Design,Database,beginner,"Learn SQL queries joins normalization and schema design","sql dbms","SQL DBMS"

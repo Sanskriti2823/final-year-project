@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: learnsmart-ai-recommendations
+    runtime: python
+    rootDir: ai-service
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: AI_SERVICE_KEY
+        sync: false
+
+  - type: web
+    name: learnsmart-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm ci
+    startCommand: npm run seed && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        sync: false
+      - key: AI_SERVICE_URL
+        value: https://learnsmart-ai-recommendations.onrender.com
+      - key: AI_SERVICE_KEY
+        sync: false
+
+  - type: web
+    name: learnsmart-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        sync: false
