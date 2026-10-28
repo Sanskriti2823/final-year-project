@@ -17,9 +17,13 @@ router.get("/", protect, async (req, res) => {
 
 router.get("/:id", protect, async (req, res) => {
   if (!mongoose.isValidObjectId(req.params.id)) return res.status(400).json({ message: "Invalid course ID" });
-  const course = await Course.findOne({ _id: req.params.id, isPublished: true });
-  if (!course) return res.status(404).json({ message: "Course not found" });
-  res.json({ course });
+  try {
+    const course = await Course.findOne({ _id: req.params.id, isPublished: true });
+    if (!course) return res.status(404).json({ message: "Course not found" });
+    res.json({ course });
+  } catch {
+    res.status(500).json({ message: "Unable to load course" });
+  }
 });
 
 router.post("/:id/enroll", protect, async (req, res) => {

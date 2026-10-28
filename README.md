@@ -4,6 +4,8 @@ Repository: `final-year-project`
 
 A final-year project starter using React + Vite, Express + MongoDB, JWT authentication, and a Python FastAPI recommendation service.
 
+The learner dashboard includes course recommendations, saved courses, progress summaries, and a continue-learning panel. The course library supports text search, topic and level filters, enrollment, and persistent light/dark themes.
+
 ## Requirements
 - Node.js 20+
 - Python 3.10+
@@ -39,6 +41,7 @@ cd backend
 npm run seed
 npm run dev
 ```
+Run the backend regression tests with `npm test`.
 Backend health: http://localhost:5000/api/health
 
 ## 4. Start frontend
@@ -60,6 +63,7 @@ Open the URL Vite prints, normally http://localhost:5173.
 
 ## Environment variables
 See `.env.example` files. Never commit `.env` files or put secrets in frontend `VITE_` variables.
+The backend `CLIENT_URL` accepts a comma-separated allowlist of browser origins. In development, both `http://localhost:5173` and `http://127.0.0.1:5173` are allowed; production only allows the configured origins.
 
 ## Upload this project to GitHub
 

@@ -16,7 +16,21 @@ if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 24) {
 }
 
 const app = express();
-app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173" }));
+const allowedOrigins = new Set(
+  (process.env.CLIENT_URL || "http://localhost:5173")
+    .split(",")
+    .map(origin => origin.trim())
+    .filter(Boolean)
+);
+if (process.env.NODE_ENV !== "production") {
+  allowedOrigins.add("http://localhost:5173");
+  allowedOrigins.add("http://127.0.0.1:5173");
+}
+app.use(cors({
+  origin(origin, callback) {
+    callback(null, !origin || allowedOrigins.has(origin));
+  }
+}));
 app.use(express.json({ limit: "1mb" }));
 
 app.get("/api/health", (req, res) => res.json({ status: "ok", service: "learnsmart-backend" }));
